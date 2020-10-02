@@ -101,6 +101,7 @@ h1.title {
 .sub.inline {
 	display: flex;
 	align-items: center;
+	flex-wrap: wrap;
 	line-height: 0;
 }
 
@@ -136,7 +137,7 @@ h1.title {
 	padding: 2px 8px 3px 8px;
 	font-size: .9rem;
 	border-radius: 3px;
-	margin-right: 3px;
+	margin: 2px 3px 2px 0;
 	line-height: normal;
 }
 
