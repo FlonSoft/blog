@@ -84,7 +84,7 @@ $tags = explode( ', ', $result['tags']);
                     </div>
                     
                     <div class="main-text">
-                    <?= $content ?>
+                    <?= nl2br2($content) ?>
                     </div>
                     
                 </div>

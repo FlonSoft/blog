@@ -26,6 +26,18 @@ function escape($html) {
 	return htmlspecialchars($html, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
 }
 
+// replace all linebreaks to <br>
+function nl2br2($string) {
+    $string = str_replace(array("\r\n", "\r", "\n"), "<br>", $string);
+    return $string;
+}
+
+// replace all <br> to linebreaks
+function br2nl2($string) {
+    $string = str_ireplace(array("<br />","<br>","<br/>"), "\r\n", $string);
+    return $string;
+}
+
 // date format function
 function formatDate($date, $type = null) {
     $spacer = ' at ';
