@@ -7,7 +7,7 @@ include('../db.inc.php');
 try {
     $connection = new PDO($sql_dsn, $sql_username, $sql_password, $sql_options);
     $sql = "SELECT * 
-                FROM blog
+                FROM posts
                 WHERE slug = :slug
                 ";
 
