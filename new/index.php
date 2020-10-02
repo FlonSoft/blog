@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL & ~E_NOTICE);
 
 $rootDir = $rootAssetUrl = '../';
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
@@ -15,52 +18,78 @@ if(!$loggedIn) {
 
 $errorMsg = null;
 $errorMsgType = 'red';
+$errors = false;
+
+$postTitle = $postDate = $postUsername = $postContent = $postTags = $slug = '';
+
+if(isset($_GET['id']) && $_GET['id'] !== '') {
+    $editMode = true;
+    $title = 'Edit post';
+    $result = getPost($connection, $_GET['id']);
+    
+    $slug = $result['slug'];
+    $postTitle = $result['title'];
+    $postDate = $result['date'];
+    $postUsername = $result['username'];
+    $postContent = $result['content'];
+    $postTags = $result['tags'];
+}else {
+    $editMode = false;
+}
 
 // form sumbited
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    $username = $_SESSION['username'];
+
+    $postTitle = trim($_POST['title']);
+    $postContent = $_POST['content'];
+    $postTags = $_POST['tags'];
+
     // Validate password
-    if(empty(trim($_POST['title']))) {
-        $title_err = "Please enter a title.";     
-    }else {
-        $postTitle = trim($_POST['title']);
+    if(empty($postTitle)) {
+        $title_err = "Please enter a title.";
     }
 
     // Validate content
-    if(empty(trim($_POST['content']))) {
-        $content_err = "Please enter more content.";     
-    }else {
-        $content = $_POST['content'];
+    if(empty(trim($postContent))) {
+        $content_err = "Please enter more content.";
     }
 
     // check for any errors
     if(empty($title_err) && empty($content_err)) {
-        
-        $username = $_SESSION['username'];
-        $slug = seoSlug($postTitle);
-        $tags = $_POST['tags'];
-
-        $new = array(
-            "username"  => $username,
-            "title" => $postTitle,
-            "slug" => $slug,
-            "content" => $content,
-            "tags" => $tags
-        );
-        $sql = sprintf(
-                "INSERT INTO %s (%s) values (%s)",
-                "posts",
-                implode(", ", array_keys($new)),
-                ":" . implode(", :", array_keys($new))
-        );
-
+        if($editMode) {
+            $new = array(
+                "title" => $postTitle,
+                "content" => $postContent,
+                "tags" => $postTags,
+                "slug" => $slug
+            );
+            $sql = "
+            UPDATE posts SET title=:title, content=:content, tags=:tags WHERE slug=:slug
+            ";
+        }else {
+            $slug = seoSlug($postTitle);
+            $new = array(
+                "username"  => $username,
+                "title" => $postTitle,
+                "slug" => $slug,
+                "content" => $postContent,
+                "tags" => $postTags
+            );
+            $sql = sprintf(
+                    "INSERT INTO %s (%s) values (%s)",
+                    "posts",
+                    implode(", ", array_keys($new)),
+                    ":" . implode(", :", array_keys($new))
+            );
+        }
         try {
             $statement = $connection->prepare($sql);
             $statement->execute($new);
             } catch(PDOException $error) {
-                echo $sql . " " . $error->getMessage();
+                $errorMsg = $sql . " " . $error->getMessage();
             }
-            
         if(!isset($error)) {
             // post created
             header('Location: '.$rootUrl.'post/?id='.$slug);
@@ -105,22 +134,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="card error <?= $errorMsgType ?>" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
                 <?php } ?>
                       
-                <form class="card" action="./" method="POST" style="padding: 1rem">
+                <form class="card" method="POST" style="padding: 1rem">
                     
                     <h2 style="color: rgba(255, 255, 255, 0.95); margin: 0 0 1rem 0;"><?= $title ?></h2>
 
                     <div class="text-input-mb text-input-mt">
-                        <input name="title" class="text-input dark block <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>" maxlength="300" placeholder="Title" value="<?= $_POST['title'] ?>" autocomplete="off" required <?php echo ((empty($title_err) && empty($content_err)) || !empty($title_err)) ? 'autofocus' : ''; ?>>
+                        <input name="title" class="text-input dark block <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>" maxlength="300" placeholder="Title" value="<?= $postTitle ?>" autocomplete="off" required <?php echo ((empty($title_err) && empty($content_err)) || !empty($title_err)) ? 'autofocus' : ''; ?>>
                         <?php echo (!empty($title_err)) ? '<div class="input-error">'.$title_err.'</div>' : ''; ?>
                     </div>
 
                     <div class="text-input-mb">
-                        <textarea name="content" class="text-input dark block <?php echo (!empty($content_err)) ? 'has-error' : ''; ?>" style="min-height: 40vh;" placeholder="Content" required><?= $_POST['content'] ?></textarea>
+                        <textarea name="content" class="text-input dark block <?php echo (!empty($content_err)) ? 'has-error' : ''; ?>" style="min-height: 40vh;" placeholder="Content" required><?= $postContent ?></textarea>
                         <?php echo (!empty($content_err)) ? '<div class="input-error">'.$content_err.'</div>' : ''; ?>
                     </div>
                         
                     <div class="text-input-mb"> 
-                        <input name="tags" class="text-input dark block" type="text" placeholder="Tags (separate with , )" value="<?= $_POST['tags'] ?>">
+                        <input name="tags" class="text-input dark block" type="text" placeholder="Tags (separate with , )" value="<?= $postTags ?>">
                     </div>
                             
                     <div class="flex text-input-mb" style="margin: .75rem 0 0 0;">
