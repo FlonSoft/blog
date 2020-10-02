@@ -5,14 +5,15 @@ session_start();
 // header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
 // global blog vars
+$rootAssetUrl = $rootUrl."assets";
+$rootDir = $_SERVER['DOCUMENT_ROOT'];
 
 $blogTitle = "Flolon Blog";
 $blogDesc = "Flolon Fox's blog for himself and others";
 $rootUrl = "https://blog.flolon.cc/";
-$rootAssetUrl = $rootUrl."assets";
-$rootDir = $_SERVER['DOCUMENT_ROOT'];
-
-//
+$blogCopyrightOwner = "Flolon";
+$blogCopyrightYear = "2020";
+$blogCopyrightLink = "https://flolon.cc/";
 
 // logged in?
 if(isset($_SESSION['auth'])) {
