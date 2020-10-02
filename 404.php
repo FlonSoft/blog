@@ -5,7 +5,7 @@ header("HTTP/1.0 404 Not Found");
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
 include_once($rootDir.'/db.inc.php');
 
-$title = 'Not Found! (Error 404)';
+$pageTitle = 'Not Found! (Error 404)';
 
 ?>
 <!DOCTYPE html>
@@ -16,9 +16,9 @@ $title = 'Not Found! (Error 404)';
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
-        <meta name="description" content="<?= $title ?> for <?= $blogTitle ?>">
+        <meta name="description" content="<?= $pageTitle ?> for <?= $blogTitle ?>">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Styles -->
@@ -42,7 +42,7 @@ $title = 'Not Found! (Error 404)';
                 <div class="content">
                     
                     <div class="meta">
-                        <h1 class="title"><?= $title ?></h1>
+                        <h1 class="title"><?= $pageTitle ?></h1>
                     </div>
                     
                     <div class="main-text">

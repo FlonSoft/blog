@@ -4,7 +4,7 @@ $rootDir = $rootAssetUrl = '../';
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
 include($rootDir.'/db.inc.php');
 
-$title = 'Privacy & Terms';
+$pageTitle = 'Privacy & Terms';
 
 ?>
 <!DOCTYPE html>
@@ -15,9 +15,9 @@ $title = 'Privacy & Terms';
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
-        <meta name="description" content="<?= $title ?> for <?= $blogTitle ?>">
+        <meta name="description" content="<?= $pageTitle ?> for <?= $blogTitle ?>">
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Styles -->
@@ -41,7 +41,7 @@ $title = 'Privacy & Terms';
                 <div class="content">
                     
                     <div class="meta">
-                        <h1 class="title"><?= $title ?></h1>
+                        <h1 class="title"><?= $pageTitle ?></h1>
                     </div>
                     
                     <div class="main-text">

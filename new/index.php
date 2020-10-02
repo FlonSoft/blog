@@ -7,7 +7,7 @@ $rootDir = $rootAssetUrl = '../';
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
 include($rootDir.'/db.inc.php');
 
-$title = 'New post';
+$pageTitle = 'New post';
 
 // logged in?
 if(!$loggedIn) {
@@ -15,16 +15,14 @@ if(!$loggedIn) {
     exit;
 }
 
-
 $errorMsg = null;
 $errorMsgType = 'red';
-$errors = false;
 
 $postTitle = $postDate = $postUsername = $postContent = $postTags = $slug = '';
 
 if(isset($_GET['id']) && $_GET['id'] !== '') {
     $editMode = true;
-    $title = 'Edit post';
+    $postTitle = 'Edit post';
     $result = getPost($connection, $_GET['id']);
     
     $slug = $result['slug'];
@@ -108,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
         <meta name="description" content="Create a post on <?= $blogTitle ?>">
 
@@ -139,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         
                     <form class="card" method="POST" style="padding: 1rem">
                         
-                        <h2 style="color: rgba(255, 255, 255, 0.95); margin: 0 0 1rem 0;"><?= $title ?></h2>
+                        <h2 style="color: rgba(255, 255, 255, 0.95); margin: 0 0 1rem 0;"><?= $pageTitle ?></h2>
 
                         <div class="text-input-mb text-input-mt">
                             <input name="title" class="text-input dark block <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>" maxlength="300" placeholder="Title" value="<?= $postTitle ?>" autocomplete="off" required <?php echo ((empty($title_err) && empty($content_err)) || !empty($title_err)) ? 'autofocus' : ''; ?>>

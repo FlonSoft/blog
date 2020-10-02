@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-$title = 'Dashboard';
+$pageTitle = 'Dashboard';
 
 $errorMsg = null;
 
@@ -28,7 +28,7 @@ $errorMsg = null;
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
         <meta name="description" content="<?= $blogTitle ?> Dashboard">
 
@@ -54,7 +54,7 @@ $errorMsg = null;
                 <div class="content">
             
                     <div class="meta">
-                        <h1 class="title"><?= $title ?></h1>
+                        <h1 class="title"><?= $pageTitle ?></h1>
                     </div>
                     
                     <div class="">

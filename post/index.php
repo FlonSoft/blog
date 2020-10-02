@@ -13,7 +13,7 @@ if($result == '') {
     exit;
 }
 
-$title = escape($result['title']);
+$pageTitle = escape($result['title']);
 $date = $result['date'];
 $username = escape($result['username']);
 $content = $result['content'];
@@ -28,7 +28,7 @@ $tags = explode( ', ', $result['tags']);
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
         <meta name="description" content="<?= escape($content) ?>">
 
@@ -55,7 +55,7 @@ $tags = explode( ', ', $result['tags']);
                     
                     <div class="meta">
                         <div class="flex" style="align-items: flex-end;">
-                            <h1 class="title"><?= $title ?></h1>
+                            <h1 class="title"><?= $pageTitle ?></h1>
                             <span class="flex-grow"></span>
                             <?php if($loggedIn) { ?>
                             <a href="<?= $rootUrl ?>new/?id=<?= escape($slug) ?>"><span class="material-icons icon btn">edit</span></a>

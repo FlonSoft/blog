@@ -4,7 +4,7 @@ $rootDir = $rootAssetUrl = '../';
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
 include($rootDir.'/db.inc.php');
 
-$title = 'Sign in';
+$pageTitle = 'Sign in';
 
 $errorMsg = null;
 $errorMsgType = 'red';
@@ -92,7 +92,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
         <meta name="description" content="Sign in to <?= $blogTitle ?>">
 
@@ -123,7 +123,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                         <?php } ?>
                         <div class="card" style="padding: 1.25rem">
                             
-                            <h1 class="title" style="margin: 0 0 1rem 0;"><?= $title ?></h1>
+                            <h1 class="title" style="margin: 0 0 1rem 0;"><?= $pageTitle ?></h1>
 
                             <form class="form" action="./" method="POST">
 

@@ -3,7 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'].'/global.inc.php');
 include($rootDir.'/db.inc.php');
 
-$title = 'Home';
+$pageTitle = 'Home';
 
 $errorMsg = null;
 $errorMsgType = 'red';
@@ -19,7 +19,7 @@ $results = getAllPosts($connection);
 
         <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
 
-        <title><?= $title ?> - <?= $blogTitle ?></title>
+        <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
         <meta name="description" content="<?= $blogDesc ?>">
 
