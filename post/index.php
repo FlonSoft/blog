@@ -6,8 +6,7 @@ include_once($rootDir.'/db.inc.php');
 
 $slug = $_GET['id'];
 
-$results = getPost($connection, $slug);
-$result = $results[0];
+$result = getPost($connection, $slug);
 
 if($result == '') {
     include($rootDir.'/404.php');
@@ -53,7 +52,13 @@ $tags = explode( ', ', $result['tags']);
             <div class="content" style="margin: 1.5rem 0 5rem 0; min-height: 74.25vh;">
                 
                 <div class="meta">
-                    <h1 class="title"><?= $title ?></h1>
+                    <div class="flex" style="align-items: flex-end;">
+                        <h1 class="title"><?= $title ?></h1>
+                        <span class="flex-grow"></span>
+                        <?php if($loggedIn) { ?>
+                        <a href="<?= $rootUrl ?>new/?id=<?= escape($slug) ?>"><span class="material-icons icon btn">edit</span></a>
+                        <?php } ?>
+                    </div>
                     <div>
                         <div class="sub inline">
                             <span class="username">

@@ -71,6 +71,13 @@ function seoSlug($string) {
 
 // -- db functions -- //
 
+// function to check if username exists
+function usernameExists($connection, $username) {
+    $stmt = $connection->prepare("SELECT 1 FROM users WHERE username=?");
+    $stmt->execute([$username]); 
+    return $stmt->fetchColumn();
+}
+
 function getAllPosts($connection) {
     // read from db table
     try {
@@ -107,7 +114,7 @@ function getPost($connection, $slug) {
         echo $sql . "<br />" . $error->getMessage();
     }
     // return results
-    return $result;
+    return $result[0];
 }
 
 ?>

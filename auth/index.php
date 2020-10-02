@@ -13,7 +13,7 @@ $returnUrl = $_REQUEST['return'];
 
 // logout
 if($_GET['action'] == 'logout') {
-    echo 'Logging out...';
+    $errorMsg = 'Logging out...';
     $_SESSION['auth'] = false;
     $_SESSION = array();
     session_destroy();
@@ -31,13 +31,6 @@ if($_SESSION['auth']) {
 
 $username = $password = "";
 $username_err = $password_err = "";
-
-// function to check if username exists
-function usernameExists($connection, $username) {
-    $stmt = $connection->prepare("SELECT 1 FROM users WHERE username=?");
-    $stmt->execute([$username]); 
-    return $stmt->fetchColumn();
-}
 
 // form sumbited
 if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -80,15 +73,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             //
             $errorMsgType = 'green';
             $errorMsg = 'Signed in!';
+            header('Location: '.$rootUrl.$returnUrl);
+            exit;
         }else {
             //bad
             $password_err = "Invalid password.";
         }
 
     }
-
-    header('Location: '.$rootUrl.$returnUrl);
-    exit;
 
 }
 ?>

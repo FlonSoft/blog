@@ -11,16 +11,10 @@ error_reporting(E_ALL);
 $title = 'Sign up';
 
 $errorMsg = null;
+$errorMsgType = 'red';
 
 $username = $email = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
-
-// function to check if username exists
-function usernameExists($connection, $username) {
-    $stmt = $connection->prepare("SELECT 1 FROM users WHERE username=?");
-    $stmt->execute([$username]); 
-    return $stmt->fetchColumn();
-}
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
