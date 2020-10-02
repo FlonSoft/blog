@@ -125,42 +125,47 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
-            
-        <div class="container" style="margin-top: 2rem;">
+        <div class="pageHeight">
+
+            <?php include($rootDir.'/navbar.inc.php'); ?>
                 
-            <div class="content" style="margin: 2rem auto 5rem auto; min-height: 73.75vh;">
-                <?php if(isset($errorMsg)) { ?>
-                    <div class="card error <?= $errorMsgType ?>" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
-                <?php } ?>
-                      
-                <form class="card" method="POST" style="padding: 1rem">
+            <div class="container" style="margin-top: 2rem;">
                     
-                    <h2 style="color: rgba(255, 255, 255, 0.95); margin: 0 0 1rem 0;"><?= $title ?></h2>
+                <div class="content">
 
-                    <div class="text-input-mb text-input-mt">
-                        <input name="title" class="text-input dark block <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>" maxlength="300" placeholder="Title" value="<?= $postTitle ?>" autocomplete="off" required <?php echo ((empty($title_err) && empty($content_err)) || !empty($title_err)) ? 'autofocus' : ''; ?>>
-                        <?php echo (!empty($title_err)) ? '<div class="input-error">'.$title_err.'</div>' : ''; ?>
-                    </div>
-
-                    <div class="text-input-mb">
-                        <textarea name="content" class="text-input dark block <?php echo (!empty($content_err)) ? 'has-error' : ''; ?>" style="min-height: 40vh;" placeholder="Content" required><?= $postContent ?></textarea>
-                        <?php echo (!empty($content_err)) ? '<div class="input-error">'.$content_err.'</div>' : ''; ?>
-                    </div>
+                    <?php if(isset($errorMsg)) { ?>
+                        <div class="card error <?= $errorMsgType ?>" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
+                    <?php } ?>
                         
-                    <div class="text-input-mb"> 
-                        <input name="tags" class="text-input dark block" type="text" placeholder="Tags (separate with , )" value="<?= $postTags ?>">
-                    </div>
+                    <form class="card" method="POST" style="padding: 1rem">
+                        
+                        <h2 style="color: rgba(255, 255, 255, 0.95); margin: 0 0 1rem 0;"><?= $title ?></h2>
+
+                        <div class="text-input-mb text-input-mt">
+                            <input name="title" class="text-input dark block <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>" maxlength="300" placeholder="Title" value="<?= $postTitle ?>" autocomplete="off" required <?php echo ((empty($title_err) && empty($content_err)) || !empty($title_err)) ? 'autofocus' : ''; ?>>
+                            <?php echo (!empty($title_err)) ? '<div class="input-error">'.$title_err.'</div>' : ''; ?>
+                        </div>
+
+                        <div class="text-input-mb">
+                            <textarea name="content" class="text-input dark block <?php echo (!empty($content_err)) ? 'has-error' : ''; ?>" style="min-height: 40vh;" placeholder="Content" required><?= $postContent ?></textarea>
+                            <?php echo (!empty($content_err)) ? '<div class="input-error">'.$content_err.'</div>' : ''; ?>
+                        </div>
                             
-                    <div class="flex text-input-mb" style="margin: .75rem 0 0 0;">
-                        <span class="flex-grow"></span>
-                        <button class="button primary" type="submit">&nbsp;Submit&nbsp;</button>
-                    </div>
-                </form>
+                        <div class="text-input-mb"> 
+                            <input name="tags" class="text-input dark block" type="text" placeholder="Tags (separate with , )" value="<?= $postTags ?>">
+                        </div>
+                                
+                        <div class="flex text-input-mb" style="margin: .75rem 0 0 0;">
+                            <span class="flex-grow"></span>
+                            <button class="button primary" type="submit">&nbsp;Submit&nbsp;</button>
+                        </div>
+                    </form>
+                    
+                </div>
                 
-            </div>
-            
-        </div><!-- /container -->
+            </div><!-- /container -->
+
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 

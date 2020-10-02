@@ -119,59 +119,63 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
-        
-        <div class="container" style="margin-top: 2rem;">
+        <div class="pageHeight">
+
+            <?php include($rootDir.'/navbar.inc.php'); ?>
             
-            <div class="content" style="margin: 2rem 0; min-height: 78.75vh;">
+            <div class="container" style="margin-top: 2rem;">
                 
-                <div class="main-text" style="max-width: 575px; margin: auto;">
-                    <?php if(isset($errorMsg)) { ?>
-                        <div class="card error <?= $errorMsgType ?>" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
-                    <?php } ?>
-                    <div class="card" style="padding: 1.25rem">
-                        
-                        <h1 class="title" style="margin: 0 0 1rem 0;"><?= $title ?></h1>
+                <div class="content">
+                    
+                    <div class="main-text" style="max-width: 575px; margin: auto;">
+                        <?php if(isset($errorMsg)) { ?>
+                            <div class="card error <?= $errorMsgType ?>" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
+                        <?php } ?>
+                        <div class="card" style="padding: 1.25rem">
+                            
+                            <h1 class="title" style="margin: 0 0 1rem 0;"><?= $title ?></h1>
 
-                        <form class="form" action="./" method="POST">
+                            <form class="form" action="./" method="POST">
 
-                            <div>
-                                <div class="text-input-mb">
-                                    <input name="username" class="text-input dark block <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>" type="text" placeholder="Username" value="<?= $username ?>" required <?php echo (!empty($username_err) || (empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err))) ? 'autofocus' : ''; ?>>
-                                    <?php echo (!empty($username_err)) ? '<div class="input-error">'.$username_err.'</div>' : ''; ?>
+                                <div>
+                                    <div class="text-input-mb">
+                                        <input name="username" class="text-input dark block <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>" type="text" placeholder="Username" value="<?= $username ?>" required <?php echo (!empty($username_err) || (empty($username_err) && empty($email_err) && empty($password_err) && empty($confirm_password_err))) ? 'autofocus' : ''; ?>>
+                                        <?php echo (!empty($username_err)) ? '<div class="input-error">'.$username_err.'</div>' : ''; ?>
+                                    </div>
+
+                                    <div class="text-input-mb">
+                                        <input name="email" class="text-input dark block <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>" type="email" placeholder="Email" value="<?= $email ?>" validate <?php echo (!empty($email_err) || (empty($password_err) && empty($confirm_password_err))) ? 'autofocus' : ''; ?>>
+                                        <?php echo (!empty($email_err)) ? '<div class="input-error">'.$email_err.'</div>' : ''; ?>
+                                    </div>
+
+                                    <div class="text-input-mb">
+                                        <input name="password" class="text-input dark block <?php echo (!empty($password_err) || !empty($confirm_password_err)) ? 'has-error' : ''; ?>" type="password" placeholder="Password" required <?php echo ((!empty($password_err) && empty($username_err) && empty($email_err)) || !empty($confirm_password_err)) ? 'autofocus' : ''; ?>>
+                                        <?php echo (!empty($password_err)) ? '<div class="input-error">'.$password_err.'</div>' : ''; ?>
+                                    </div>
+
+                                    <div class="text-input-mb">
+                                        <input name="confirm_password" class="text-input dark block <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>" type="password" placeholder="Retype Password" required>
+                                        <?php echo (!empty($confirm_password_err)) ? '<div class="input-error">'.$confirm_password_err.'</div>' : ''; ?>
+                                    </div>
                                 </div>
 
-                                <div class="text-input-mb">
-                                    <input name="email" class="text-input dark block <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>" type="email" placeholder="Email" value="<?= $email ?>" validate <?php echo (!empty($email_err) || (empty($password_err) && empty($confirm_password_err))) ? 'autofocus' : ''; ?>>
-                                    <?php echo (!empty($email_err)) ? '<div class="input-error">'.$email_err.'</div>' : ''; ?>
+                                <div style="margin: 1rem 0 0 0; display: flex; align-items: center;">
+                                    <a class="button outline" href="../">Sign in</a>
+                                    <span class="flex-grow"></span>
+                                    <button class="button primary" type="submit">Continue</button>
                                 </div>
 
-                                <div class="text-input-mb">
-                                    <input name="password" class="text-input dark block <?php echo (!empty($password_err) || !empty($confirm_password_err)) ? 'has-error' : ''; ?>" type="password" placeholder="Password" required <?php echo ((!empty($password_err) && empty($username_err) && empty($email_err)) || !empty($confirm_password_err)) ? 'autofocus' : ''; ?>>
-                                    <?php echo (!empty($password_err)) ? '<div class="input-error">'.$password_err.'</div>' : ''; ?>
-                                </div>
+                            </form>
 
-                                <div class="text-input-mb">
-                                    <input name="confirm_password" class="text-input dark block <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>" type="password" placeholder="Retype Password" required>
-                                    <?php echo (!empty($confirm_password_err)) ? '<div class="input-error">'.$confirm_password_err.'</div>' : ''; ?>
-                                </div>
-                            </div>
-
-                            <div style="margin: 1rem 0 0 0; display: flex; align-items: center;">
-                                <a class="button outline" href="../">Sign in</a>
-                                <span class="flex-grow"></span>
-                                <button class="button primary" type="submit">Continue</button>
-                            </div>
-
-                        </form>
+                        </div>
 
                     </div>
-
+                    
                 </div>
                 
-            </div>
-            
-        </div><!-- /container -->
+            </div><!-- /container -->
+
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 

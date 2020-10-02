@@ -33,27 +33,31 @@ $title = 'Not Found! (Error 404)';
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
-
-        <div class="container" style="margin-top: 1.5rem;">
+        <div class="pageHeight">
             
-            <div class="content" style="margin: 2rem 0 5rem 0; min-height: 73.75vh;">
+            <?php include($rootDir.'/navbar.inc.php'); ?>
+
+            <div class="container" style="margin-top: 2rem;">
                 
-                <div class="meta">
-                    <h1 class="title"><?= $title ?></h1>
+                <div class="content">
+                    
+                    <div class="meta">
+                        <h1 class="title"><?= $title ?></h1>
+                    </div>
+                    
+                    <div class="main-text">
+
+                        <p>This resource does not exist</p>
+                        <p><a class="link" href="<?= $rootUrl ?>">Home</a></p>
+
+
+                    </div>
+                    
                 </div>
                 
-                <div class="main-text">
+            </div><!-- /container -->
 
-                    <p>This resource does not exist</p>
-                    <p><a class="link" href="<?= $rootUrl ?>">Home</a></p>
-
-
-                </div>
-                
-            </div>
-            
-        </div><!-- /container -->
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 

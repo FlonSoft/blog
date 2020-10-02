@@ -45,35 +45,39 @@ $errorMsg = null;
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
+        <div class="pageHeight">
+            
+            <?php include($rootDir.'/navbar.inc.php'); ?>
 
-        <div class="container" style="margin-top: 2rem;">
-    
-            <div class="content" style="min-height: 82.25vh; margin-top: 2.25rem;">
+            <div class="container" style="margin-top: 2rem;">
         
-                <div class="meta">
-                    <h1 class="title"><?= $title ?></h1>
-                </div>
-                
-                <div class="">
-                    <?php
-                    if(isset($errorMsg)) {
-                        ?>
-                        <div class="card error red" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
+                <div class="content">
+            
+                    <div class="meta">
+                        <h1 class="title"><?= $title ?></h1>
+                    </div>
+                    
+                    <div class="">
                         <?php
-                    }
-                    ?>
-                    <div class="card" style="padding: 1.25rem">
-                        
-                        
+                        if(isset($errorMsg)) {
+                            ?>
+                            <div class="card error red" style="margin-bottom: .75rem;"><?= $errorMsg ?></div>
+                            <?php
+                        }
+                        ?>
+                        <div class="card" style="padding: 1.25rem">
+                            
+                            
+
+                        </div>
 
                     </div>
-
+                    
                 </div>
                 
-            </div>
-            
-        </div><!-- /container -->
+            </div><!-- /container -->
+
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 

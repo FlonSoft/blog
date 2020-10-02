@@ -32,28 +32,32 @@ $title = 'Privacy & Terms';
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
+        <div class="pageHeight">
 
-        <div class="container" style="margin-top: 1.5rem;">
-            
-            <div class="content" style="margin: 2rem 0 5rem 0; min-height: 73.75vh;">
+            <?php include($rootDir.'/navbar.inc.php'); ?>
+
+            <div class="container" style="margin-top: 2rem;">
                 
-                <div class="meta">
-                    <h1 class="title"><?= $title ?></h1>
+                <div class="content">
+                    
+                    <div class="meta">
+                        <h1 class="title"><?= $title ?></h1>
+                    </div>
+                    
+                    <div class="main-text">
+
+                        <h2>Privacy Policy</h2>
+                        <p>Explains what information we collect and why, how we use it, and how to review and update it.</p>
+                        <a class="link primary" href="./privacy/">Read our Privacy Policy</a>
+
+
+                    </div>
+                    
                 </div>
                 
-                <div class="main-text">
-
-                    <h2>Privacy Policy</h2>
-                    <p>Explains what information we collect and why, how we use it, and how to review and update it.</p>
-                    <a class="link primary" href="./privacy/">Read our Privacy Policy</a>
-
-
-                </div>
-                
-            </div>
-            
-        </div><!-- /container -->
+            </div><!-- /container -->
+        
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 

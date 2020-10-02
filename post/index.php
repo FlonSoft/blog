@@ -45,49 +45,53 @@ $tags = explode( ', ', $result['tags']);
     </head>
     <body>
 
-        <?php include($rootDir.'/navbar.inc.php'); ?>
+        <div class="pageHeight">
 
-        <div class="container" style="margin-top: 1.5rem;">
-            
-            <div class="content" style="margin: 1.5rem 0 5rem 0; min-height: 74.25vh;">
+            <?php include($rootDir.'/navbar.inc.php'); ?>
+
+            <div class="container">
                 
-                <div class="meta">
-                    <div class="flex" style="align-items: flex-end;">
-                        <h1 class="title"><?= $title ?></h1>
-                        <span class="flex-grow"></span>
-                        <?php if($loggedIn) { ?>
-                        <a href="<?= $rootUrl ?>new/?id=<?= escape($slug) ?>"><span class="material-icons icon btn">edit</span></a>
-                        <?php } ?>
-                    </div>
-                    <div>
-                        <div class="sub inline">
-                            <span class="username">
-                                <span class="material-icons icon">account_circle</span><span id="username"><?= $username ?></span>
-                            </span>
-                            <span class="spacer"> • </span>
-                            <span class="date">
-                                <span class="material-icons icon">calendar_today</span><span id="date"><?= formatDate($date, 'time') ?></span>
-                            </span>
+                <div class="content">
+                    
+                    <div class="meta">
+                        <div class="flex" style="align-items: flex-end;">
+                            <h1 class="title"><?= $title ?></h1>
+                            <span class="flex-grow"></span>
+                            <?php if($loggedIn) { ?>
+                            <a href="<?= $rootUrl ?>new/?id=<?= escape($slug) ?>"><span class="material-icons icon btn">edit</span></a>
+                            <?php } ?>
                         </div>
-                        <?php if($tags[0] !== '' && $tags[0] !== null) { ?>
-                        <div class="tags">
-                                <?php
-                                foreach ($tags as $tag) {
-                                echo '<span class="tag">'. escape($tag) .'</span>';
-                                }
-                                ?>
+                        <div>
+                            <div class="sub inline">
+                                <span class="username">
+                                    <span class="material-icons icon">account_circle</span><span id="username"><?= $username ?></span>
+                                </span>
+                                <span class="spacer"> • </span>
+                                <span class="date">
+                                    <span class="material-icons icon">calendar_today</span><span id="date"><?= formatDate($date, 'time') ?></span>
+                                </span>
+                            </div>
+                            <?php if($tags[0] !== '' && $tags[0] !== null) { ?>
+                            <div class="tags">
+                                    <?php
+                                    foreach ($tags as $tag) {
+                                    echo '<span class="tag">'. escape($tag) .'</span>';
+                                    }
+                                    ?>
+                            </div>
+                            <?php } ?>
                         </div>
-                        <?php } ?>
                     </div>
+                    
+                    <div class="main-text">
+                    <?= $content ?>
+                    </div>
+                    
                 </div>
                 
-                <div class="main-text">
-                <?= $content ?>
-                </div>
-                
-            </div>
-            
-        </div><!-- /container -->
+            </div><!-- /container -->
+
+        </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
 
