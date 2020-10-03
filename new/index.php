@@ -155,7 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                         <div class="flex text-input-mb" style="margin: .75rem 0 0 0;">
                         <?php if($editMode) { ?>
-                            <a href="#" title="Delete post"><span class="material-icons icon btn danger"> delete </span></a>
+                            <a href="#" class="button outline danger" title="Delete post"><span class="material-icons icon"> delete </span></a>
                         <?php } ?>
                             <span class="flex-grow"></span>
                             <button type="submit" class="button primary" title="Submit post">&nbsp;Submit&nbsp;</button>
