@@ -111,7 +111,6 @@ h1.title {
 }
 
 .sub .icon {
-	font-size: inherit;
 	margin-right: 5px;
 }
 
@@ -221,6 +220,32 @@ p {
 	background-color:  #ccc!important;
 }
 
+.button.primary {
+	background-color: rgb(161, 250, 60);
+	color: rgb(10, 10, 10)!important;
+}
+
+.button.primary:hover {
+	background-color: rgb(174, 255, 81)!important;
+}
+
+.button.primary:active {
+	background-color: rgb(150, 216, 74)!important;
+}
+
+.button.danger {
+	background-color: rgb(250, 60, 60);
+	color: rgb(10, 10, 10)!important;
+}
+
+.button.danger:hover {
+	background-color: rgb(255, 81, 81)!important;
+}
+
+.button.danger:active {
+	background-color: rgb(216, 74, 74)!important;
+}
+
 .button.outline {
 	background-color: transparent;
 	color:  rgba(255, 255, 255, 0.95)!important;
@@ -242,22 +267,58 @@ p {
 	border: 1px solid rgba(255, 255, 255, 0.88);
 }
 
+.button.outline.danger {
+	background-color: transparent;
+	color: rgb(250, 60, 60)!important;
+	border: 1px solid rgb(250, 60, 60);
+	padding: calc(8px - 1px) 1rem;
+}
+
+.button.outline.danger:hover {
+	background-color: rgba(255, 81, 81, 0.055)!important;
+	border-color: rgba(255, 81, 81, .67);
+}
+
+.button.outline.danger:active {
+	background-color: rgba(216, 74, 74, 0.175)!important;
+}
+
 .button.small {
 	font-size: .95rem;
 	padding: 6px .75rem;
 }
 
-.button.primary {
-	background-color: rgb(161, 250, 60);
-	color: rgb(10, 10, 10)!important;
+.button .material-icons.icon {
+	font-size: 1.325rem;
+	font-weight: normal;
+	display: flex;
+	align-items: center;
 }
 
-.button.primary:hover {
-	background-color: rgb(174, 255, 81)!important;
+.icon.btn {
+	padding: 2px;
+	margin: 2px;
+	color: rgba(255, 255, 255, 0.75);
 }
 
-.button.primary:active {
-	background-color: rgb(150, 216, 74)!important;
+.icon.btn:hover {
+	color: rgba(255, 255, 255, 0.82);
+}
+
+.icon.btn:active {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.icon.btn.danger {
+	color: rgba(250, 60, 60, .88);
+}
+
+.icon.btn.danger:hover {
+	color: rgba(254, 64, 64, .95);
+}
+
+.icon.btn.danger:active {
+	color: rgba(250, 60, 60, .9);
 }
 
 /* form stuff */
@@ -507,16 +568,6 @@ background-color: rgb(30, 30, 30);
 	background-color: rgba(53, 53, 53, .92);
 	overflow: hidden;
 	height: 1px;
-}
-
-.icon.btn {
-	padding: 2px;
-	margin: 2px;
-	color: rgba(255, 255, 255, 0.75);
-}
-
-.icon.btn:hover {
-	color: rgba(255, 255, 255, 0.82);
 }
 
 /* footer */
