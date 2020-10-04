@@ -19,20 +19,20 @@ $errorMsg = null;
 $errorMsgType = 'red';
 
 $postTitle = $postDate = $postUsername = $postContent = $postTags = $slug = '';
+$editMode = false;
 
 if(isset($_GET['id']) && $_GET['id'] !== '') {
-    $editMode = true;
-    $postTitle = 'Edit post';
     $result = getPost($connection, $_GET['id']);
-    
-    $slug = $result['slug'];
-    $postTitle = $result['title'];
-    $postDate = $result['date'];
-    $postUsername = $result['username'];
-    $postContent = $result['content'];
-    $postTags = $result['tags'];
-}else {
-    $editMode = false;
+    if($_SESSION['username'] == $result['username']) {
+        $editMode = true;
+        $pageTitle = 'Edit post';
+        $slug = $result['slug'];
+        $postTitle = $result['title'];
+        $postDate = $result['date'];
+        $postUsername = $result['username'];
+        $postContent = $result['content'];
+        $postTags = $result['tags'];
+    }
 }
 
 // form sumbited

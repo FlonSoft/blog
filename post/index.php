@@ -57,7 +57,7 @@ $tags = explode( ', ', $result['tags']);
                         <div class="flex" style="align-items: flex-end;">
                             <h1 class="title"><?= $pageTitle ?></h1>
                             <span class="flex-grow"></span>
-                            <?php if($loggedIn) { ?>
+                            <?php if($loggedIn && $_SESSION['username'] == $username) { ?>
                             <a href="<?= $rootUrl ?>new/?id=<?= escape($slug) ?>"><span class="material-icons icon btn">edit</span></a>
                             <?php } ?>
                         </div>
