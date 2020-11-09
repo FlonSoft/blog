@@ -9,7 +9,6 @@ if(!$loggedIn) {
     exit;
 }
 
-//read from db table //
 try {
     $sql = "DELETE 
                 FROM posts
@@ -19,13 +18,16 @@ try {
     $statement = $connection->prepare($sql);
     $statement->bindParam(':slug', $_GET['id'], PDO::FETCH_ASSOC);
     $statement->execute();
+
 } catch(PDOException $error) {
-    echo $sql . "<br />" . $error->getMessage();
+    $err = $error->getMessage();
 }
+
 if(!isset($error)) {
     $result = array("error" => "ok");
+}else {
+    $result = array("error" => $error);
 }
-// page //
 header('Content-Type: application/json');
 
 echo json_encode($result, JSON_PRETTY_PRINT);
