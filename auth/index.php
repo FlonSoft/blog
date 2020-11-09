@@ -90,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <meta charset="UTF-8">
 
-        <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
+        <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>images/logo.png">
 
         <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
@@ -98,8 +98,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Styles -->
-        <link rel="stylesheet" href="<?= $rootAssetUrl ?>/css/default.css"/>
-        <link rel="stylesheet" href="<?= $rootAssetUrl ?>/css/global.css"/>
+        <link rel="stylesheet" href="<?= $rootAssetUrl ?>css/default.css"/>
+        <link rel="stylesheet" href="<?= $rootAssetUrl ?>css/global.css"/>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&amp;text=Flolon%20Blog&display=swap" rel="stylesheet">

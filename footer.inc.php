@@ -9,4 +9,9 @@
 
         </footer>
 
-        <script src="<?= $rootAssetUrl ?>/js/global.js"></script>
+        <script>
+                var rootUrl = "<?= $rootUrl ?>";
+                var rootAssetUrl = "<?= $rootAssetUrl ?>";
+                var rootApiUrl = "<?= $rootApiUrl ?>";
+        </script>
+        <script src="<?= $rootAssetUrl ?>js/global.js"></script>

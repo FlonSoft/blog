@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <meta charset="UTF-8">
 
-        <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>/images/logo.png">
+        <link rel="icon" type="image/png" href="<?= $rootAssetUrl ?>images/logo.png">
 
         <title><?= $pageTitle ?> - <?= $blogTitle ?></title>
 
@@ -112,8 +112,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Styles -->
-        <link rel="stylesheet" href="<?= $rootAssetUrl ?>/css/default.css"/>
-        <link rel="stylesheet" href="<?= $rootAssetUrl ?>/css/global.css"/>
+        <link rel="stylesheet" href="<?= $rootAssetUrl ?>css/default.css"/>
+        <link rel="stylesheet" href="<?= $rootAssetUrl ?>css/global.css"/>
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.googleapis.com">
         <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&amp;text=Flolon%20Blog&display=swap" rel="stylesheet">
@@ -155,7 +155,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                                 
                         <div class="flex text-input-mb" style="margin: .75rem 0 0 0;">
                         <?php if($editMode) { ?>
-                            <a href="#" class="button outline danger" title="Delete post"><span class="material-icons icon"> delete </span></a>
+                            <a onclick="deletePost('<?= $_GET['id'] ?>', '<?= $postTitle ?>')" class="light" title="Delete post"><span class="material-icons icon btn"> delete </span></a>
                         <?php } ?>
                             <span class="flex-grow"></span>
                             <button type="submit" class="button primary" title="Submit post">&nbsp;Submit&nbsp;</button>
@@ -169,6 +169,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </div><!-- /pageHeight -->
 
         <?php include($rootDir.'/footer.inc.php'); ?>
-
+        <script src="<?= $rootAssetUrl ?>js/new.js"></script>
     </body>
 </html>

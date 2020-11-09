@@ -8,13 +8,15 @@ session_start();
 
 $blogTitle = "Flolon Blog";
 $blogDesc = "Flolon Fox's blog for himself and others";
+
 $rootUrl = "https://blog.flolon.cc/";
-$rootAssetUrl = $rootUrl."assets";
+$rootAssetUrl = $rootUrl."assets/";
+$rootApiUrl = $rootUrl."api/";
 $rootDir = $_SERVER['DOCUMENT_ROOT'];
 
 $blogCopyrightOwner = "Flolon";
-$blogCopyrightYear = "2020";
 $blogCopyrightLink = "https://flolon.cc/";
+$blogCopyrightYear =  date("Y");
 
 // logged in?
 if(isset($_SESSION['auth'])) {

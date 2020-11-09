@@ -23,6 +23,7 @@ body {
 /* links */
 a {
 	color: #fff;
+	cursor: pointer;
 }
 
 a.link:hover {
