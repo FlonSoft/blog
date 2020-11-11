@@ -19,12 +19,10 @@ try {
     $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 } catch(PDOException $error) {
-    $err = $error->getMessage();
+    $result[0] = array("error" => $error->getMessage());
 }
 
 header('Content-Type: application/json');
- 
-echo json_encode($err, JSON_PRETTY_PRINT);
 
-echo json_encode($result, JSON_PRETTY_PRINT);
+echo json_encode($result[0], JSON_PRETTY_PRINT);
 ?>
