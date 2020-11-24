@@ -20,6 +20,7 @@
                 <div class="dropdown-item"><span class="dp-text" title="Signed in as <?= $_SESSION['username'] ?>"><b><?= $_SESSION['username'] ?></b></span></div>
                 <div class="divider"></div>
                 <div class="items">
+                    <a class="dropdown-item" href="<?= $rootUrl ?>dashboard/"><span class="dp-text"><span class="material-icons">dashboard</span>Dashboard</span></a>
                     <a class="dropdown-item" href="<?= $rootUrl ?>auth/?action=logout"><span class="dp-text"><span class="material-icons">exit_to_app</span>Sign out</span></a>
                 </div>
             </nav>
