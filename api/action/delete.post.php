@@ -26,9 +26,14 @@ try {
 if(!isset($error)) {
     $result = array("error" => "ok");
 }else {
-    $result = array("error" => $error);
+    $result = array("error" => $err);
 }
+
 header('Content-Type: application/json');
 
-echo json_encode($result, JSON_PRETTY_PRINT);
+if ($_GET['pp']) {
+    echo json_encode($result, JSON_PRETTY_PRINT);
+} else {
+    echo json_encode($result);
+}
 ?>
